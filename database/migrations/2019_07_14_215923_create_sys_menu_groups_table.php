@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMsUsersTable extends Migration
+class CreateSysMenuGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateMsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ms_user', function (Blueprint $table) {
-            $table->string('username',10);
-            $table->string('password',255);
-            $table->string('nama_lengkap',75);
-            $table->tinyInteger('isDel');
+        Schema::create('sys_menu_group', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nama',20);
+            $table->string('id_target',25);
+            $table->string('icon',25);
+            $table->integer('ord');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateMsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_users');
+        Schema::dropIfExists('sys_menu_groups');
     }
 }

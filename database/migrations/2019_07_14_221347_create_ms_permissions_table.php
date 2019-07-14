@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMsUsersTable extends Migration
+class CreateMsPermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ms_user', function (Blueprint $table) {
+        Schema::create('ms_permission', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('username',10);
-            $table->string('password',255);
-            $table->string('nama_lengkap',75);
-            $table->tinyInteger('isDel');
+            $table->integer('id_menu');
+            $table->tinyInteger('permission');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ms_users');
+        Schema::dropIfExists('ms_permissions');
     }
 }

@@ -78,7 +78,7 @@
                                 <input type="text" class="form-control" id="inputUrl" name="url" placeholder="Url" autocomplete="off" required>
                             </div>
                             <div class="form-group">
-                                <label for="inputViewName">Url</label>
+                                <label for="inputViewName">View Name</label>
                                 <input type="text" class="form-control" id="inputViewName" name="view_name" placeholder="View Name" autocomplete="off" required>
                             </div>
                             <div class="form-group">
@@ -169,7 +169,7 @@
                     { "data": "nama_group" },
                     { "data": "url" },
                     { "data": "view_name" },
-                    { "data": "order" },
+                    { "data": "ord" },
                 ],
                 "order": [
                     [1,'asc'],

@@ -137,7 +137,7 @@
                 "searching": false,
                 "ajax": {
                     "method": "GET",
-                    "url": "{{ url('/dashboard/system/group-menu/list') }}",
+                    "url": "{{ url('/dashboard/system/menu-group/list') }}",
                     "header": {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),
                     }
@@ -146,7 +146,7 @@
                     { "data": "nama" },
                     { "data": "id_target" },
                     { "data": "icon" },
-                    { "data": "order" },
+                    { "data": "ord" },
                 ],
                 "order": [[3,'asc']]
             });
@@ -251,9 +251,9 @@
 
                 let url;
                 if (optionData.val() == 'new') {
-                    url = '{{ url('dashboard/system/group-menu/add') }}';
+                    url = '{{ url('dashboard/system/menu-group/add') }}';
                 } else {
-                    url = '{{ url('dashboard/system/group-menu/edit') }}';
+                    url = '{{ url('dashboard/system/menu-group/edit') }}';
                 }
 
                 $.ajaxSetup({

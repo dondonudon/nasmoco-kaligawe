@@ -1,5 +1,5 @@
 @php
-    $sidebar = App\Http\Controllers\Dashboard::getSidebar();
+    $sidebar = App\Http\Controllers\DashboardSidebar::getSidebar();
     $routeName = \Illuminate\Support\Facades\Route::currentRouteName();
 @endphp
 <!DOCTYPE html>
