@@ -15,7 +15,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Nasmoco Siliwangi - Dashboard</title>
+    <title>Nasmoco Kaligawe - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free-5.9.0-web/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -49,7 +49,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="{{ asset('img/NasmocoSiliwangi.png') }}" class="img-thumbnail" width="65%" alt="...">
+            <img src="{{ asset('img/NasmocoKaligawe.png') }}" class="img-thumbnail" width="65%" alt="...">
 {{--            <div class="sidebar-brand-icon rotate-n-15">--}}
 {{--                <i class="fas fa-car"></i>--}}
 {{--            </div>--}}
@@ -265,7 +265,7 @@
     btnLogout.click(function (e) {
         e.preventDefault();
         $.ajax({
-            url: "{{ url('dashboard/session/flush') }}",
+            url: "{{ url('dashboard/logout') }}",
             method: "get",
             success: function(result) {
                 console.log(result);

@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('dashboard/login','Dashboard@login')->name('dashboard_login');
 Route::post('dashboard/login/check','Dashboard@loginCheck');
+Route::get('dashboard/logout','Dashboard@sessionFlush');
 
 Route::get('dashboard','Dashboard@index')->name('dashboard');
 

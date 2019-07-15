@@ -47,20 +47,20 @@
                 <div class="card shadow mb-4">
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary" id="cardTitle">Opsi Vote Baru</h6>
+                        <h6 class="m-0 font-weight-bold text-primary" id="cardTitle">Summary Voting</h6>
                     </div>
                     <form id="cardForm">
                     @csrf
                     <!-- Card Body -->
                         <div class="card-body">
-                            <canvas id="myChart" width="400" height="400"></canvas>
+                            <canvas id="myChart" width="400" height="50"></canvas>
                         </div>
                         <!-- Card Footer -->
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-xl-10"></div>
                                 <div class="col-xl-2 mt-2">
-                                    <button type="button" class="btn btn-block btn-outline-dark" id="btnCancel">Close</button>
+                                    <button type="button" class="btn btn-block btn-outline-dark" id="btnClose">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -115,44 +115,39 @@
                     data: {start_date: startDate, end_date: endDate},
                     success: function(result) {
                         console.log(result);
-                        var data = JSON.parse(result);
-                        if (data.rows == '') {
-                            Swal.fire({
-                                type: 'info',
-                                title: 'Data kosong',
-                                text: 'Tidak terdapat data pada filter yang anda pilih'
-                            });
-                        } else {
-                            cardComponent.removeClass('d-none');
-                            let chart = new Chart(ctx, {
-                                type: 'horizontalBar',
-                                data: {
-                                    labels: ["LIKE", "DISLIKE"],
-                                    datasets: [{
-                                        label: '# of Votes',
-                                        data: [30, 19],
-                                        backgroundColor: [
-                                            'rgba(255, 99, 132, 0.2)',
-                                            'rgba(54, 162, 235, 0.2)'
-                                        ],
-                                        borderColor: [
-                                            'rgba(255,99,132,1)',
-                                            'rgba(54, 162, 235, 1)'
-                                        ],
-                                        borderWidth: 1
+                        let data = JSON.parse(result);
+                        cardComponent.removeClass('d-none');
+                        let chart = new Chart(ctx, {
+                            type: 'horizontalBar',
+                            data: {
+                                labels: ["LIKE", "DISLIKE"],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [data.like, data.dislike],
+                                    backgroundColor: [
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 99, 132, 0.2)',
+                                    ],
+                                    borderColor: [
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255,99,132,1)',
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    xAxes: [{
+                                        ticks: {
+                                            beginAtZero:true
+                                        }
                                     }]
-                                },
-                                options: {
-                                    scales: {
-                                        yAxes: [{
-                                            ticks: {
-                                                beginAtZero:true
-                                            }
-                                        }]
-                                    }
                                 }
-                            })
-                        }
+                            }
+                        });
+                        $('html, body').animate({
+                            scrollTop: cardComponent.offset().top
+                        }, 1000);
                     }
                 });
             })

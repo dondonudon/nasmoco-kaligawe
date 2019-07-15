@@ -27,7 +27,7 @@ class VoteKepuasanPelanggan extends Controller
 
     public function list(Request $request) {
         $startDate = $request->start_date;
-        $endDate = $request->end_date;
+        $endDate = $request->end_date.' 23:50:00';
 
         $voteLike = DB::table('kepuasan_pelanggan')
             ->where('id_vote','=','1')
