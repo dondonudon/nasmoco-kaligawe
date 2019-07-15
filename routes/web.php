@@ -45,3 +45,7 @@ Route::get('dashboard/master/vote','MasterVote@index')->name('master_vote');
 Route::get('dashboard/master/vote/list','MasterVote@list');
 Route::post('dashboard/master/vote/add','MasterVote@add');
 Route::post('dashboard/master/vote/edit','MasterVote@edit');
+
+Route::get('dashboard/master/profile','MasterProfile@index')->name('master_profile');
+Route::get('dashboard/master/profile/detail','MasterProfile@detail');
+Route::post('dashboard/master/profile/edit','MasterProfile@edit');

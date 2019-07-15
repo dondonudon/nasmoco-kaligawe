@@ -72,7 +72,7 @@ class SystemMenu extends Controller
             'nama' => $request->nama,
             'url' => $request->url,
             'view_name' => $request->view_name,
-            'order' => $request->order,
+            'ord' => $request->order,
         ];
 
         $group = DB::table('sys_menu')->where('id','=',$id);

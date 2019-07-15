@@ -147,7 +147,7 @@
             });
             $.ajax({
                 url: '{{ url('dashboard/master/profile/detail') }}',
-                method: "post",
+                method: "get",
                 success: function(result) {
                     // console.log(result);
                     let convrt = JSON.parse(result);

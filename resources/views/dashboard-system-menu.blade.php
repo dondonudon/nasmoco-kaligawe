@@ -65,6 +65,7 @@
                     <!-- Card Body -->
                         <div class="card-body">
                             <input type="hidden" id="option" value="new">
+                            <input type="hidden" id="option" value="new">
                             <div class="form-group">
                                 <label for="inputGroup">Nama Group</label>
                                 <select class="form-control" id="inputGroup" name="id_group"></select>
@@ -294,7 +295,7 @@
                     method: "post",
                     data: {id: idMenu, id_group: iGroup.val(), nama: iNama.val(), url: iUrl.val(), view_name: iViewName.val(), order: iOrder.val()},
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                         var data = JSON.parse(result);
                         if (data.status == 'success') {
                             Swal.fire({
