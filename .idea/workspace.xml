@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dd6906e-a209-491d-bf6b-070368f4cd33" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SystemMenu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SystemMenu.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-master-profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-master-profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-system-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-system-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Votes.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-vote-kepuasan-pelanggan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,20 +29,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="397">
-              <caret line="49" column="69" lean-forward="true" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
+            <state relative-caret-position="748">
+              <caret line="53" column="84" selection-start-line="53" selection-start-column="84" selection-end-line="53" selection-end-column="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteKepuasanPelanggan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="559">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <folding>
+                <element signature="e#40#68#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nasmoco-siliwangi/app/Http/Controllers/PenjualanSummary.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MasterProfile.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/dashboard-vote-kepuasan-pelanggan.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="51" column="22" lean-forward="true" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-              <folding>
-                <element signature="e#40#55#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="454">
+              <caret line="135" column="69" lean-forward="true" selection-start-line="135" selection-start-column="69" selection-end-line="135" selection-end-column="69" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../nasmoco-siliwangi/resources/views/dashboard-penjualan-summary.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="727">
+              <caret line="425" column="19" lean-forward="true" selection-start-line="394" selection-start-column="16" selection-end-line="425" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -66,7 +94,6 @@
         <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Android.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard-login.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Dashboard.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_14_215858_create_sys_menus_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_07_14_215923_create_sys_menu_groups_table.php" />
@@ -83,13 +110,16 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MasterUser.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MasterVote.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard-master-vote.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SystemMenu.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard-system-menu.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/../nasmoco-siliwangi/app/Http/Controllers/MasterProfile.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard-master-profile.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MasterProfile.php" />
+        <option value="$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/VoteKepuasanPelanggan.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/dashboard-vote-kepuasan-pelanggan.blade.php" />
       </list>
     </option>
   </component>
@@ -227,6 +257,24 @@
             <path>
               <item name="nasmoco-kaligawe" type="b2602c69:ProjectViewProjectNode" />
               <item name="nasmoco-kaligawe" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nasmoco-kaligawe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasmoco-kaligawe" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nasmoco-kaligawe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasmoco-kaligawe" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="chart.js-2.8.0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="nasmoco-kaligawe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="nasmoco-kaligawe" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -287,7 +335,7 @@
       <option name="presentableId" value="Default" />
       <updated>1563117127281</updated>
       <workItem from="1563117129014" duration="4703000" />
-      <workItem from="1563139350389" duration="13046000" />
+      <workItem from="1563139350389" duration="15691000" />
     </task>
     <task id="LOCAL-00001" summary="login done">
       <created>1563141637316</created>
@@ -300,7 +348,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17749000" />
+    <option name="totallyTimeSpent" value="20394000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="-2" width="1920" height="1082" extended-state="6" />
@@ -320,8 +368,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3290735" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.3290735" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053364" side_tool="true" weight="0.3290735" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3290735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -576,30 +624,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MasterVote.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="68" column="34" selection-start-line="68" selection-start-column="34" selection-end-line="68" selection-end-column="34" />
-          <folding>
-            <element signature="e#40#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dashboard-layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/dasboard-vote-kepuasan-pelanggan.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1764">
-          <caret line="84" column="10" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/dashboard-master-vote.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -635,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="49" column="69" lean-forward="true" selection-start-line="49" selection-start-column="69" selection-end-line="49" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/dashboard-master-profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-793">
@@ -656,6 +673,61 @@
           <folding>
             <element signature="e#40#55#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MasterVote.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="46" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nasmoco-siliwangi/resources/views/dashboard-penjualan-summary.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="425" column="19" lean-forward="true" selection-start-line="394" selection-start-column="16" selection-end-line="425" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="53" column="84" selection-start-line="53" selection-start-column="84" selection-end-line="53" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../nasmoco-siliwangi/app/Http/Controllers/PenjualanSummary.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="52" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard-layout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2919">
+          <caret line="35" column="97" selection-start-line="35" selection-start-column="97" selection-end-line="35" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/VoteKepuasanPelanggan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/dashboard-vote-kepuasan-pelanggan.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="135" column="69" lean-forward="true" selection-start-line="135" selection-start-column="69" selection-end-line="135" selection-end-column="69" />
         </state>
       </provider>
     </entry>

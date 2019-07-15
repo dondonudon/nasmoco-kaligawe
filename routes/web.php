@@ -49,3 +49,6 @@ Route::post('dashboard/master/vote/edit','MasterVote@edit');
 Route::get('dashboard/master/profile','MasterProfile@index')->name('master_profile');
 Route::get('dashboard/master/profile/detail','MasterProfile@detail');
 Route::post('dashboard/master/profile/edit','MasterProfile@edit');
+
+Route::get('dashboard/voting/kepuasan-pelanggan','VoteKepuasanPelanggan@index')->name('voting_kepuasan_pelanggan');
+Route::post('dashboard/voting/kepuasan-pelanggan/list','VoteKepuasanPelanggan@list');

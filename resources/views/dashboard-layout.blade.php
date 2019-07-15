@@ -32,6 +32,9 @@
     <!-- DateRangePicker -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/daterangepicker-master/daterangepicker.css') }}">
 
+    <!-- Chart JS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/chart.js-2.8.0/Chart.css') }}">
+
     @yield('style')
 
 </head>
@@ -42,7 +45,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -249,6 +252,9 @@
 <script type="text/javascript" src="{{ asset('vendor/datatables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/datatables/FixedColumns-3.2.5/js/dataTables.fixedColumns.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendor/datatables/FixedColumns-3.2.5/js/fixedColumns.bootstrap4.min.js') }}"></script>
+
+<!-- DataTables -->
+<script type="text/javascript" src="{{ asset('vendor/chart.js-2.8.0/Chart.js') }}"></script>
 
 <!-- DateRangePicker -->
 <script type="text/javascript" src="{{ asset('vendor/daterangepicker-master/moment.min.js') }}"></script>
