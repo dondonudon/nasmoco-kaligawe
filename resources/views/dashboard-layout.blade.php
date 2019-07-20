@@ -195,7 +195,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span><i class="far fa-copyright"></i> {{ date('Y') }} NASMOCO Kaligawe </span>
                 </div>
             </div>
         </footer>

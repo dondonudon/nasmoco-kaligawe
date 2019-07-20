@@ -48,25 +48,33 @@
                     <!-- Card Header - Dropdown -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                         <h6 class="m-0 font-weight-bold text-primary" id="cardTitle">Summary Voting</h6>
+                        <button class="btn d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm" id="btnClose" style="font-size: 12px;">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </div>
                     <form id="cardForm">
                     @csrf
-                    <!-- Card Body -->
+                        <!-- Card Body -->
                         <div class="card-body">
                             <canvas id="myChart" width="400" height="50"></canvas>
+{{--                            <hr style="border-width: 10px;">--}}
                         </div>
-                        <!-- Card Footer -->
                         <div class="card-footer">
-                            <div class="row">
-                                <div class="col-xl-10"></div>
-                                <div class="col-xl-2 mt-2">
-                                    <button type="button" class="btn btn-block btn-outline-dark" id="btnClose">Close</button>
-                                </div>
-                            </div>
+                            <table class="table table-hover table-bordered table-sm display nowrap" id="datatable" width="100%">
+                                <thead class="text-white bg-primary">
+                                <tr>
+                                    <th>Work Order</th>
+                                    <th>Username</th>
+                                    <th>Vote</th>
+                                    <th>Tanggal Vote</th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                     </form>
                 </div>
             </div>
+
         </div>
 
     </div>
@@ -92,6 +100,75 @@
             }
         });
 
+        const tables = $('#datatable').DataTable({
+            "scrollY": "150px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            // "paging": false,
+            "pageLength": 25,
+            "bInfo": false,
+            {{--"ajax": {--}}
+            {{--    "method": "GET",--}}
+            {{--    "url": "{{ url('/dashboard/master/vote/list') }}",--}}
+            {{--    "header": {--}}
+            {{--        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content'),--}}
+            {{--    }--}}
+            {{--},--}}
+            "columns": [
+                { "data": "work_order" },
+                { "data": "username" },
+                { "data": "nama" },
+                { "data": "created_at" },
+            ],
+            "order": [[3,'asc']]
+        });
+
+        $('#datatable tbody').on( 'click', 'tr', function () {
+            let data = tables.row( this ).data();
+            idVote = data.id;
+            namaVote = data.nama;
+            // console.log(idVote);
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+                btnEdit.attr('disabled','true');
+            } else {
+                tables.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+                btnEdit.removeAttr('disabled');
+            }
+        });
+
+        function updateChart(like, dislike) {
+            new Chart(ctx, {
+                type: 'horizontalBar',
+                data: {
+                    labels: ["LIKE", "DISLIKE"],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [like, dislike],
+                        backgroundColor: [
+                            'rgba(51, 204, 51, 0.2)',
+                            'rgba(255, 80, 80, 0.2)',
+                        ],
+                        borderColor: [
+                            'rgba(51, 204, 51, 1)',
+                            'rgba(255,80,80,1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+        }
+
         $(document).ready(function () {
             btnCancel.click(function (e) {
                 e.preventDefault();
@@ -114,37 +191,13 @@
                     method: "post",
                     data: {start_date: startDate, end_date: endDate},
                     success: function(result) {
-                        console.log(result);
+                        // console.log(result);
                         let data = JSON.parse(result);
                         cardComponent.removeClass('d-none');
-                        let chart = new Chart(ctx, {
-                            type: 'horizontalBar',
-                            data: {
-                                labels: ["LIKE", "DISLIKE"],
-                                datasets: [{
-                                    label: '# of Votes',
-                                    data: [data.like, data.dislike],
-                                    backgroundColor: [
-                                        'rgba(54, 162, 235, 0.2)',
-                                        'rgba(255, 99, 132, 0.2)',
-                                    ],
-                                    borderColor: [
-                                        'rgba(54, 162, 235, 1)',
-                                        'rgba(255,99,132,1)',
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    xAxes: [{
-                                        ticks: {
-                                            beginAtZero:true
-                                        }
-                                    }]
-                                }
-                            }
-                        });
+                        tables.clear().draw();
+                        tables.rows.add(data.detail).draw();
+                        updateChart(data.like, data.dislike);
+
                         $('html, body').animate({
                             scrollTop: cardComponent.offset().top
                         }, 1000);

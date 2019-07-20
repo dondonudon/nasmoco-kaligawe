@@ -23,4 +23,10 @@ Route::post('master/user/add','Android@add');
 
 Route::post('master/vote/add','Android@masterVote');
 
+Route::post('master/url','Android@masterUrl');
+
 Route::post('vote/kepuasan-pelanggan','Android@vote');
+
+Route::post('image','Android@image');
+
+Route::post('master/area','Android@getArea');

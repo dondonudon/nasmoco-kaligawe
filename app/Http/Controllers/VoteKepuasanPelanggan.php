@@ -34,13 +34,19 @@ class VoteKepuasanPelanggan extends Controller
             ->whereBetween('created_at',[$startDate,$endDate])
             ->get()->count();
         $voteDislike = DB::table('kepuasan_pelanggan')
-            ->where('id_vote','=','0')
+            ->where('id_vote','=','2')
             ->whereBetween('created_at',[$startDate,$endDate])
             ->get()->count();
+        $voteDetail = clone DB::table('kepuasan_pelanggan')
+            ->select('kepuasan_pelanggan.work_order','kepuasan_pelanggan.username','ms_vote.nama','kepuasan_pelanggan.created_at')
+            ->join('ms_vote','kepuasan_pelanggan.id_vote','=','ms_vote.id')
+            ->whereBetween('kepuasan_pelanggan.created_at',[$startDate,$endDate])
+            ->get();
 
         $result = [
             'like' => $voteLike,
             'dislike' => $voteDislike,
+            'detail' => $voteDetail,
         ];
         return json_encode($result);
     }

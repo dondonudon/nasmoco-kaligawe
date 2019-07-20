@@ -53,7 +53,7 @@ class DashboardSidebar extends Controller
             ->distinct()
             ->get();
         $listSidebar = array();
-        $group = sysMenuGroup::all();
+//        $group = sysMenuGroup::all();
         foreach ($group as $g) {
             $listMenu = array();
             $viewName = array();
@@ -65,6 +65,7 @@ class DashboardSidebar extends Controller
                     ['ms_permission.username','=',$username],
                     ['ms_permission.permission','=','1'],
                 ])
+                ->orderBy('sys_menu.ord','asc')
                 ->get();
             foreach ($menu as $m) {
                 $listMenu[] = array(

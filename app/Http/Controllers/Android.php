@@ -8,6 +8,8 @@ use App\msVote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class Android extends Controller
 {
@@ -103,5 +105,27 @@ class Android extends Controller
             ];
         }
         return $result;
+    }
+
+    public function masterUrl(Request $request) {
+        $nama = $request->nama;
+        $sysDetail = DB::table('sys_detail')->where('nama','=',$nama)->get();
+        return $sysDetail->toJson();
+    }
+
+    public function getArea() {
+        return DB::table('ms_area')->get()->toJson();
+    }
+
+    public function image(Request $request) {
+        $area = $request->id_area;
+
+        $dbArea = DB::table('ms_image')->where('id_area','=',$area)->get();
+
+        $store = [];
+        foreach ($dbArea as $a) {
+            $store[] = asset('storage/'.$a->file);
+        }
+        return json_encode($store);
     }
 }

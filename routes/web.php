@@ -51,5 +51,19 @@ Route::get('dashboard/master/profile','MasterProfile@index')->name('master_profi
 Route::get('dashboard/master/profile/detail','MasterProfile@detail');
 Route::post('dashboard/master/profile/edit','MasterProfile@edit');
 
+Route::get('dashboard/master/set-url-survey','MasterUrlVoting@index')->name('master_url_voting');
+Route::post('dashboard/master/set-url-survey/edit','MasterUrlVoting@edit');
+Route::post('dashboard/master/set-url-survey/detail','MasterUrlVoting@detail');
+
 Route::get('dashboard/voting/kepuasan-pelanggan','VoteKepuasanPelanggan@index')->name('voting_kepuasan_pelanggan');
 Route::post('dashboard/voting/kepuasan-pelanggan/list','VoteKepuasanPelanggan@list');
+
+Route::get('dashboard/master/area','MasterArea@index')->name('master_area');
+Route::get('dashboard/master/area/list','MasterArea@list');
+Route::post('dashboard/master/area/add','MasterArea@add');
+Route::post('dashboard/master/area/edit','MasterArea@edit');
+
+Route::get('dashboard/master/image','MasterImage@index')->name('master_image');
+Route::get('dashboard/master/image/list','MasterImage@list');
+Route::post('dashboard/master/image/add/{id_area}','MasterImage@add');
+Route::post('dashboard/master/image/edit','MasterImage@edit');
