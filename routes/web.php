@@ -67,3 +67,5 @@ Route::get('dashboard/master/image','MasterImage@index')->name('master_image');
 Route::get('dashboard/master/image/list','MasterImage@list');
 Route::post('dashboard/master/image/add/{id_area}','MasterImage@add');
 Route::post('dashboard/master/image/edit','MasterImage@edit');
+Route::post('dashboard/master/image/delete','MasterImage@delete');
+Route::post('dashboard/master/image/preview','MasterImage@preview');

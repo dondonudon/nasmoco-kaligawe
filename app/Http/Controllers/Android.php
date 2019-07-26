@@ -120,11 +120,14 @@ class Android extends Controller
     public function image(Request $request) {
         $area = $request->id_area;
 
-        $dbArea = DB::table('ms_image')->where('id_area','=',$area)->get();
+        $dbArea = DB::table('ms_image')->get();
 
         $store = [];
         foreach ($dbArea as $a) {
-            $store[] = asset('storage/'.$a->file);
+            $store[] = [
+                'id_area' => $a->id_area,
+                'url' => asset('laravel-system/storage/app/public/'.$a->file),
+            ];
         }
         return json_encode($store);
     }

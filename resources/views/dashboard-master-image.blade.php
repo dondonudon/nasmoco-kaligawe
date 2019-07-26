@@ -2,6 +2,8 @@
 
 @section('style')
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/filepond-master/filepond.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/PhotoSwipe-4.1.3/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/PhotoSwipe-4.1.3/default-skin/default-skin.css') }}">
 @endsection
 
 @php
@@ -32,6 +34,13 @@ $area = \App\msArea::all();
                     </div>
                     <!-- Card Body -->
                     <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="formControlRange">Setting detik slideshow</label>
+                                <input type="range" class="form-control-range" id="formControlRange" min="1" max="10" value="2">
+                            </div>
+                        </form>
+                        <hr>
                         <table class="table table-hover table-bordered table-sm display nowrap" id="datatable" width="100%">
                             <thead class="text-white bg-primary">
                             <tr>
@@ -98,6 +107,73 @@ $area = \App\msArea::all();
         </div>
 
     </div>
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
 @endsection
 
 @section('script')
@@ -106,7 +182,15 @@ $area = \App\msArea::all();
     <script src="{{ asset('vendor/filepond-master/filepond-plugin-image-crop.js') }}"></script>
     <script src="{{ asset('vendor/filepond-master/filepond-plugin-image-transform.js') }}"></script>
     <script src="{{ asset('vendor/filepond-master/filepond.min.js') }}"></script>
+    <script src="{{ asset('vendor/PhotoSwipe-4.1.3/photoswipe.min.js') }}"></script>
+    <script src="{{ asset('vendor/PhotoSwipe-4.1.3/photoswipe-ui-default.min.js') }}"></script>
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            }
+        });
+
         const cardComponent = $('#cardComponent');
         const cardForm = $('#cardForm');
         const cardTitle = $('#cardTitle');
@@ -123,7 +207,14 @@ $area = \App\msArea::all();
 
         const iArea = $('#inputArea');
 
+        let idImage, namaImage;
+        let imageItem = [];
+
+        //IMAGE Preview
+        const pswpElement = document.querySelectorAll('.pswp')[0];
+
         const inputElement = document.getElementById('uploadImage');
+
         btnSet.click(function(e) {
             e.preventDefault();
             $('html, body').animate({
@@ -156,7 +247,35 @@ $area = \App\msArea::all();
             });
         });
 
-        let idArea, namaArea;
+        function reloadImage() {
+            $.ajax({
+                url: '{{ url('dashboard/master/image/preview') }}',
+                method: "post",
+                success: function(result) {
+                    // console.log(result);
+                    imageItem = JSON.parse(result);
+
+                }
+            });
+        }
+        const openPhotoSwipe = function(index) {
+            let pswpElement = document.querySelectorAll('.pswp')[0];
+
+            // define options (if needed)
+            let options = {
+                // history & focus options are disabled on CodePen
+                history: false,
+                focus: false,
+
+                showAnimationDuration: 0,
+                hideAnimationDuration: 0
+
+            };
+
+            let gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, imageItem, options);
+            gallery.init();
+            gallery.goTo(index);
+        };
 
         const tables = $('#datatable').DataTable({
             "scrollY": "150px",
@@ -181,8 +300,8 @@ $area = \App\msArea::all();
 
         $('#datatable tbody').on( 'click', 'tr', function () {
             let data = tables.row( this ).data();
-            idVote = data.id;
-            namaVote = data.nama;
+            idImage = data.no;
+            namaImage = data.file;
             // console.log(idVote);
             if ( $(this).hasClass('selected') ) {
                 $(this).removeClass('selected');
@@ -203,6 +322,7 @@ $area = \App\msArea::all();
         }
 
         $(document).ready(function () {
+            reloadImage();
             btnNew.click(function (e) {
                 e.preventDefault();
                 resetForm();
@@ -215,12 +335,14 @@ $area = \App\msArea::all();
             });
 
             btnPreview.click(function (e) {
-
+                e.preventDefault();
+                openPhotoSwipe(idImage - 1);
             });
 
             btnClose.click(function (e) {
                 e.preventDefault();
                 tables.ajax.reload();
+                reloadImage();
 
                 $("html, body").animate({ scrollTop: 0 }, 500, function () {
                     cardComponent.addClass('d-none');
@@ -230,6 +352,40 @@ $area = \App\msArea::all();
                     resetForm();
                 });
             });
+
+            btnDelete.click(function (e) {
+                e.preventDefault();
+                console.log(idImage);
+                $.ajax({
+                    url: '{{ url('dashboard/master/image/delete') }}',
+                    method: "post",
+                    data: {id_file: idImage, nama_file: namaImage},
+                    success: function(result) {
+                        // console.log(result);
+                        var data = JSON.parse(result);
+                        if (data.status == 'success') {
+                            Swal.fire({
+                                type: 'success',
+                                title: 'Berhasil',
+                                text: 'Data tersimpan',
+                                onClose: function() {
+                                    $("html, body").animate({ scrollTop: 0 }, 500, function () {
+                                        cardComponent.addClass('d-none');
+                                        resetForm();
+                                        tables.ajax.reload();
+                                    });
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                type: 'info',
+                                title: 'Gagal',
+                                text: data.reason,
+                            });
+                        }
+                    }
+                });
+            })
         })
     </script>
 @endsection

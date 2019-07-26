@@ -30,11 +30,21 @@ class MasterImage extends Controller
 
     public function list() {
 //        $area = msImage::all();
-        $area['data'] = DB::table('ms_image')
-            ->select('ms_image.id','ms_area.nama','file')
+        $data = DB::table('ms_image')
+            ->select('ms_image.id as id','ms_area.nama','file')
             ->join('ms_area','ms_image.id_area','=','ms_area.id')
             ->get();
-
+        $no = 1;
+        $area['data'] = [];
+        foreach ($data as $d) {
+            $area['data'][] = [
+                'id' => $d->id,
+                'nama' => $d->nama,
+                'file' => $d->file,
+                'no' => $no,
+            ];
+            $no++;
+        }
         return json_encode($area);
     }
 
@@ -54,11 +64,37 @@ class MasterImage extends Controller
     }
 
     public function preview(Request $request) {
-        $idFile = $request->nama_file;
+        $msImage = msImage::all();
+        $result = [];
+        foreach ($msImage as $img) {
+            if ($request->getHttpHost() !== '127.0.0.1:8000') {
+                $url = url(asset('laravel-system/storage/app/public')).'/'.$img->file;
+            } else {
+                $url = Storage::url($img->file);
+            }
+            $result[] = [
+                'src' => $url,
+                'w' => '1000',
+                'h' => '600',
+                'title' => $img->file,
+            ];
+        }
+        return json_encode($result);
+    }
 
-        $url = Storage::url($idFile);
+    public function delete(Request $request) {
+        $idFile = $request->id_file;
+        $namaFIle = $request->nama_file;
 
-        return $url;
+        $msImage = DB::table('ms_image')->where('id','=',$idFile);
 
+        try {
+            $msImage->delete();
+            Storage::delete('public/'.$namaFIle);
+        } catch (\Exception $ex) {
+            dd('Exception block', $ex);
+        }
+        $result['status'] = 'success';
+        return json_encode($result);
     }
 }
