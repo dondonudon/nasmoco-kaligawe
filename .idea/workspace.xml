@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4dd6906e-a209-491d-bf6b-070368f4cd33" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MasterImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MasterImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/laravel-system.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public.zip" beforeDir="false" afterPath="$PROJECT_DIR$/public/public.zip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard-master-image.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard-master-image.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Android.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Android.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/system.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -186,6 +180,8 @@
       <workItem from="1570697509610" duration="1901000" />
       <workItem from="1570881995912" duration="616000" />
       <workItem from="1571190961514" duration="4461000" />
+      <workItem from="1571195503100" duration="653000" />
+      <workItem from="1571198576904" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="login done">
       <created>1563141637316</created>

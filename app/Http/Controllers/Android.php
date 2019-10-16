@@ -126,7 +126,7 @@ class Android extends Controller
         foreach ($dbArea as $a) {
             $store[] = [
                 'id_area' => $a->id_area,
-                'url' => asset('laravel-system/storage/app/public/'.$a->file),
+                'url' => asset('storage/'.$a->file),
             ];
         }
         return json_encode($store);
