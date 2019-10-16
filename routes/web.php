@@ -15,8 +15,14 @@
 //    return view('welcome');
 //});
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return redirect('dashboard');
+});
+
+Route::get('storage/{file}',function ($file) {
+    return response()->file(storage_path('app/public/'.$file));
 });
 
 Route::get('dashboard/login','Dashboard@login')->name('dashboard_login');

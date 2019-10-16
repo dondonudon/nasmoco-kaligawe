@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 
 class MasterImage extends Controller
 {
@@ -50,9 +51,10 @@ class MasterImage extends Controller
 
     public function add(Request $request, $id_area) {
         $file = $request->file('filepond');
+        $extension = $file->getClientOriginalExtension();
         $area = DB::table('ms_area')->select('nama')->where('id','=',$id_area)->first();
 
-        $name = $area->nama.'_'.date('Y-m-d_H:i:s').'.jpg';
+        $name = Uuid::uuid1()->toString().'.'.$extension;
 
         $image = new msImage;
         $image->id_area = $id_area;
@@ -60,22 +62,18 @@ class MasterImage extends Controller
         $image->save();
 
         return Storage::putFileAs('public', $file, $name);
-
     }
 
     public function preview(Request $request) {
         $msImage = msImage::all();
         $result = [];
         foreach ($msImage as $img) {
-            if ($request->getHttpHost() !== '127.0.0.1:8000') {
-                $url = url(asset('laravel-system/storage/app/public')).'/'.$img->file;
-            } else {
-                $url = Storage::url($img->file);
-            }
+            $fileImage = getimagesize(storage_path('app/public/'.$img->file));
+            $url = url('storage/'.$img->file);
             $result[] = [
                 'src' => $url,
-                'w' => '1000',
-                'h' => '600',
+                'w' => $fileImage[0],
+                'h' => $fileImage[1],
                 'title' => $img->file,
             ];
         }

@@ -223,15 +223,14 @@ $area = \App\msArea::all();
             inputElement.removeAttribute('hidden');
             iArea.attr('disabled', true);
             FilePond.registerPlugin(FilePondPluginImageResize);
-            FilePond.registerPlugin(FilePondPluginImageCrop);
             FilePond.registerPlugin(FilePondPluginImageTransform);
             FilePond.create( inputElement );
             FilePond.setOptions({
                 allowImageTransform: true,
                 allowImageResize: true,
                 imageResizeMode: 'cover',
-                imageResizeTargetHeight: 700,
-                imageResizeTargetWidth: 1200,
+                imageResizeTargetHeight: 2000,
+                imageResizeTargetWidth: 2000,
                 imageTransformOutputMimeType: 'image/jpeg',
                 allowMultiple: true,
                 allowDrop: true,

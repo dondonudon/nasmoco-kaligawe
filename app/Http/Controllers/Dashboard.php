@@ -43,29 +43,33 @@ class Dashboard extends Controller
         $username = $request->username;
         $password = $request->password;
 
-        $check = DB::table('ms_user')->where('username','=',$username);
-        if ($check->exists()) {
-            $user = $check->first();
-            $userPassword = Crypt::decryptString($user->password);
-            if ($userPassword == $password) {
-                Session::put('username',$username);
-                Session::put('nama_lengkap',$user->nama_lengkap);
+        try {
+            $check = DB::table('ms_user')->where('username','=',$username);
+            if ($check->exists()) {
+                $user = $check->first();
+                $userPassword = Crypt::decryptString($user->password);
+                if ($userPassword == $password) {
+                    Session::put('username',$username);
+                    Session::put('nama_lengkap',$user->nama_lengkap);
 
-                $result = [
-                    'status' => 'success',
-                ];
+                    $result = [
+                        'status' => 'success',
+                    ];
+                } else {
+                    $result = [
+                        'status' => 'failed',
+                        'reason' => 'Password Salah',
+                    ];
+                }
             } else {
                 $result = [
                     'status' => 'failed',
-                    'reason' => 'Password Salah',
+                    'reason' => 'Username tidak terdaftar',
                 ];
             }
-        } else {
-            $result = [
-                'status' => 'failed',
-                'reason' => 'Username tidak terdaftar',
-            ];
+            return json_encode($result);
+        } catch (\Exception $ex) {
+            dd('Exception Block',$ex);
         }
-        return json_encode($result);
     }
 }
